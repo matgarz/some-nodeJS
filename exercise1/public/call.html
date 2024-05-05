@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Calls</title>
+   
+
+</head>
+<body>
+    <h2>Call Node.js Functions</h2>
+    
+    <!-- Form for findSummation function -->
+    <form id="findSummationForm" action="/findSummation"  method="POST">
+        <label for="number">Enter a number:</label>
+        <input type="number" id="number" name="number"  required>
+        <button type="submit" onclick="findSummation()" >Find Summation</button>
+    </form>
+    
+    <!-- Form for uppercaseFirstandLast function -->
+    <form id="uppercaseFirstandLastForm" action="/uppercaseFirstandLast" method="POST">
+        <label for="text">Enter a string:</label>
+        <input type="text" id="text" name="text" required>
+        <button type="submit" onclick="uppercaseFirstandLast()">Uppercase First and Last</button>
+    </form>
+    
+    <!-- Form for findAverageAndMedian function -->
+    <form id="findAverageAndMedianForm" action="/findAverageAndMedian" method="POST">
+        <label for="numbers">Enter numbers separated by commas:</label>
+        <input type="text" id="numbers" name="numbers" required>
+        <button type="submit" onclick="findAverageAndMedian()">Find Average and Median</button>
+    </form>
+    
+    <!-- Form for find4Digits function -->
+    <form id="find4DigitsForm" action="/find4Digits" method="POST">
+        <label for="numbers2">Enter numbers separated by spaces:</label>
+        <input type="text" id="numbers2" name="numbers" required>
+        <button type="submit" onclick="find4Digits()">Find 4 Digits</button>
+    </form>
+
+    <!-- Display area for results -->
+    <div id="result"></div>
+
+    <!-- Client-side JavaScript to handle form submissions -->
+    <script src="../functions.js">
+        // Function to update the result area with received data
+        function updateResult(data) {
+            document.getElementById('result').innerHTML = data;
+        }
+
+        // Attach event listeners to each form to handle form submissions
+        document.getElementById('findSummationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            fetch('/findSummation', {
+                method: form.method,
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => updateResult(data))
+            .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('uppercaseFirstandLastForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            fetch('/uppercaseFirstandLast', {
+                method: form.method,
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => updateResult(data))
+            .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('findAverageAndMedianForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            fetch('/findAverageAndMedian', {
+                method: form.method,
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => updateResult(data))
+            .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('find4DigitsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            fetch('/find4Digits', {
+                method: form.method,
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => updateResult(data))
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

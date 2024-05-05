@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number of Visits</title>
+</head>
+<body>
+    <h1>Number of Visits</h1>
+    <div id="visit-info"></div>
+
+    <script>
+        fetch('/').then(response => response.text()).then(data => {
+            document.getElementById('visit-info').innerHTML = data;
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    </script>
+</body>
+</html>

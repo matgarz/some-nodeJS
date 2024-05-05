@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+</head>
+<body>
+    <h1>Contact Form</h1>
+    <form id="contactForm" action="/submit" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="phone">Phone Number (ddd-ddd-dddd):</label>
+        <input type="text" id="phone" name="phone" required pattern="\d{3}-\d{3}-\d{4}" title="Please enter a phone number in the format ddd-ddd-dddd."><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="response"></div>
+
+    
+</body>
+</html>
